@@ -36,7 +36,7 @@ public class Coord implements Parcelable{
     public Coord(){
     }
 
-    protected Coord(Parcel in) {
+    private Coord(Parcel in) {
         lon = in.readFloat();
         lat = in.readFloat();
     }

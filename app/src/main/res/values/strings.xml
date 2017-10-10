@@ -2,4 +2,13 @@
     <string name="app_name">Weather Forecast</string>
     <string name="search_title">Search</string>
     <string name="enter_city_name">Enter city name</string>
+    <string name="min_temp">%1$s\u2103</string>
+    <string name="max_temp">%1$s\u2103</string>
+    <string name="humidity">Humidity: %1$s%%</string>
+    <string name="pressure">Pressure: %1$shpa</string>
+    <string name="sunrise">Sunrise: %1$s</string>
+    <string name="sunset">Sunset: %1$s</string>
+    <string name="network_error_string">You are currently offline. Please check your connectivity settings and try again.</string>
+    <string name="generic_error_string">The application has encountered an unknown error. Please try again.</string>
+    <string name="temp_string">%1$s\u2103</string>
 </resources>

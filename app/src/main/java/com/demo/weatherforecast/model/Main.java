@@ -10,7 +10,7 @@ import android.os.Parcelable;
 public class Main implements Parcelable{
 
     private float temp;
-    private int pressure;
+    private float pressure;
     private int humidity;
     private float temp_min;
     private float temp_max;
@@ -23,11 +23,11 @@ public class Main implements Parcelable{
         this.temp = temp;
     }
 
-    public int getPressure() {
+    public float getPressure() {
         return pressure;
     }
 
-    public void setPressure(int pressure) {
+    public void setPressure(float pressure) {
         this.pressure = pressure;
     }
 
@@ -60,7 +60,7 @@ public class Main implements Parcelable{
 
     private Main(Parcel in) {
         temp = in.readFloat();
-        pressure = in.readInt();
+        pressure = in.readFloat();
         humidity = in.readInt();
         temp_min = in.readFloat();
         temp_max = in.readFloat();
@@ -74,7 +74,7 @@ public class Main implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeFloat(temp);
-        dest.writeInt(pressure);
+        dest.writeFloat(pressure);
         dest.writeInt(humidity);
         dest.writeFloat(temp_min);
         dest.writeFloat(temp_max);

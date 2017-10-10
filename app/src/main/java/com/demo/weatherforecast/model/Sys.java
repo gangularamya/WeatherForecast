@@ -72,7 +72,7 @@ public class Sys implements Parcelable{
     public Sys(){
     }
 
-    protected Sys(Parcel in) {
+    private Sys(Parcel in) {
         type = in.readInt();
         id = in.readInt();
         message = in.readFloat();

@@ -10,7 +10,7 @@ import android.os.Parcelable;
 public class Wind implements Parcelable {
 
     private float speed;
-    private int deg;
+    private float deg;
 
     public float getSpeed() {
         return speed;
@@ -20,11 +20,11 @@ public class Wind implements Parcelable {
         this.speed = speed;
     }
 
-    public int getDeg() {
+    public float getDeg() {
         return deg;
     }
 
-    public void setDeg(int deg) {
+    public void setDeg(float deg) {
         this.deg = deg;
     }
 
@@ -36,15 +36,15 @@ public class Wind implements Parcelable {
     public Wind(){
     }
 
-    protected Wind(Parcel in) {
+    private Wind(Parcel in) {
         speed = in.readFloat();
-        deg = in.readInt();
+        deg = in.readFloat();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeFloat(speed);
-        dest.writeInt(deg);
+        dest.writeFloat(deg);
     }
 
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="twenty_four_sp_text_size">24sp</dimen>
+    <dimen name="twenty_four_dp_margin">24dp</dimen>
+    <dimen name="sixteen_dp_margin">16dp</dimen>
+    <dimen name="sixteen_sp_text_size">16sp</dimen>
+    <dimen name="sixty_dp">60dp</dimen>
+    <dimen name="sixty_two_sp_text_size">62sp</dimen>
+    <dimen name="eighteen_sp_text_size">18sp</dimen>
+    <dimen name="six_dp_margin">6dp</dimen>
+    <dimen name="tweleve_sp_text_size">12sp</dimen>
+</resources>
