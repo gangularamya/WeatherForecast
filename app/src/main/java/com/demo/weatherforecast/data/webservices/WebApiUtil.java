@@ -97,7 +97,7 @@ public class WebApiUtil {
     public void getWeatherImage(ImageApiListener listener, String imageId) {
         mImageListener = listener;
         Uri builtUri = Uri.parse(Constants.OPEN_WEATHER_IMAGE_API).buildUpon()
-                .appendPath(imageId +Constants.PNG_EXTENSION)
+                .appendPath(imageId + Constants.PNG_EXTENSION)
                 .build();
         ImageRequest imageRequest = new ImageRequest(builtUri.toString(), imageOnSuccessListener(), 300, 200, ImageView.ScaleType.FIT_XY, Bitmap.Config.ARGB_8888, imageOnErrorListener());
         imageRequest.setShouldCache(false);

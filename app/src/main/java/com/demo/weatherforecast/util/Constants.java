@@ -18,7 +18,7 @@ public class Constants {
     public static final String APP_ID_PARAM = "APPID";
     public static final String APP_ID = "976535ec83c4aba2eae773b96f0c6986";
     public static final String PNG_EXTENSION = ".png";
-
-
+    public static final String PREFS_FILE_NAME = "WeatherForecastPreferances";
+    public static final String CITY = "city";
 
 }

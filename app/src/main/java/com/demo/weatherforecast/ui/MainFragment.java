@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,8 +24,10 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.demo.weatherforecast.R;
+import com.demo.weatherforecast.data.sharedpreferences.SharedPreferenceHelper;
 import com.demo.weatherforecast.data.webservices.WebApiUtil;
 import com.demo.weatherforecast.model.WeatherData;
+import com.demo.weatherforecast.util.Constants;
 import com.demo.weatherforecast.util.DateUtil;
 import com.demo.weatherforecast.util.GeneralUtil;
 import com.google.gson.Gson;
@@ -70,10 +73,19 @@ public class MainFragment extends Fragment {
         mCurrentTime = view.findViewById(R.id.currentTime);
         mCurrentTime.setText(DateUtil.formatDateToDisplay(Calendar.getInstance().getTime()));
         mLastUpdatedTime = view.findViewById(R.id.last_updated_time);
+        checkSharedPref();
         return view;
     }
 
+    private void checkSharedPref(){
+        String city = SharedPreferenceHelper.getPreference(getActivity(), Constants.CITY);
+        if(!TextUtils.isEmpty(city)){
+            sendWeatherForecastRequest(city);
+        }
+    }
+
     private void sendWeatherForecastRequest(String query) {
+        SharedPreferenceHelper.setPreference(getActivity(), Constants.CITY,query);
         if (GeneralUtil.isOnline(getActivity())) {
             GeneralUtil.showProgress(mProgressBar, getActivity().getWindow());
             WebApiUtil.getInstance().getWeatherForecast(getWeatherForecastListener, query);

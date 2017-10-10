@@ -29,9 +29,9 @@ public class DateUtil {
     /*
     Returns relative Time
      */
-    public static CharSequence getLastUpdated(long dateinMillis){
+    public static CharSequence getLastUpdated(long dateinMillis) {
         long currentTime = Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTimeInMillis();
-        return DateUtils.getRelativeTimeSpanString(dateinMillis*1000L,currentTime,
+        return DateUtils.getRelativeTimeSpanString(dateinMillis * 1000L, currentTime,
                 DateUtils.MINUTE_IN_MILLIS,
                 DateUtils.FORMAT_NO_NOON);
     }
@@ -39,9 +39,9 @@ public class DateUtil {
     /*
        Returns hour and min using time in millis
      */
-    public static String getHourMinsTime(long dateinMillis){
+    public static String getHourMinsTime(long dateinMillis) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(dateinMillis*1000);
-        return calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE);
+        calendar.setTimeInMillis(dateinMillis * 1000);
+        return calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE);
     }
 }
