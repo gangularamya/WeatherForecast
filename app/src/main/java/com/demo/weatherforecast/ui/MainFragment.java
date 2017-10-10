@@ -49,7 +49,6 @@ public class MainFragment extends Fragment {
     private ImageView mTempImage;
     private TextView mCurrentTime;
     private TextView mLastUpdatedTime;
-    private long mRequestStartTime;
 
 
     @Nullable
@@ -77,7 +76,6 @@ public class MainFragment extends Fragment {
     private void sendWeatherForecastRequest(String query) {
         if (GeneralUtil.isOnline(getActivity())) {
             GeneralUtil.showProgress(mProgressBar, getActivity().getWindow());
-            mRequestStartTime = System.currentTimeMillis();
             WebApiUtil.getInstance().getWeatherForecast(getWeatherForecastListener, query);
         } else {
             GeneralUtil.hideProgress(mProgressBar, getActivity().getWindow());
@@ -94,18 +92,19 @@ public class MainFragment extends Fragment {
             GeneralUtil.hideProgress(mProgressBar, getActivity().getWindow());
             mCurrentTime.setText(DateUtil.formatDateToDisplay(Calendar.getInstance().getTime()));
             mRootContainer.setVisibility(View.VISIBLE);
-            long totalRequestTime = System.currentTimeMillis() - mRequestStartTime;
+
             WeatherData weatherData = new Gson().fromJson(response, WeatherData.class);
             sendImageRequest(weatherData.getWeather().get(0).getIcon());
+
             mCityView.setText(weatherData.getName());
             mTempView.setText(getString(R.string.temp_string, String.valueOf(weatherData.getMain().getTemp())));
             mMinTempView.setText(getString(R.string.min_temp, String.valueOf(weatherData.getMain().getTemp_min())));
             mMaxTempView.setText(getString(R.string.max_temp, String.valueOf(weatherData.getMain().getTemp_max())));
             mHumidityView.setText(getString(R.string.humidity, String.valueOf(weatherData.getMain().getHumidity())));
             mPressureView.setText(getString(R.string.pressure, String.valueOf(weatherData.getMain().getPressure())));
-            mSunRiseView.setText(getString(R.string.sunrise, String.valueOf(weatherData.getSys().getSunrise())));
-            mSunSetView.setText(getString(R.string.sunset, String.valueOf(weatherData.getSys().getSunset())));
-
+            mSunRiseView.setText(getString(R.string.sunrise, String.valueOf(DateUtil.getHourMinsTime(weatherData.getSys().getSunrise()))));
+            mSunSetView.setText(getString(R.string.sunset, String.valueOf(DateUtil.getHourMinsTime(weatherData.getSys().getSunset()))));
+            mLastUpdatedTime.setText(getString(R.string.last_updated_time, String.valueOf(DateUtil.getLastUpdated(weatherData.getDt()))));
         }
 
         private void sendImageRequest(String icon) {

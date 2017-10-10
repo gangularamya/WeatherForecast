@@ -5,6 +5,8 @@
     <dimen name="sixteen_dp_margin">16dp</dimen>
     <dimen name="sixteen_sp_text_size">16sp</dimen>
     <dimen name="sixty_dp">60dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="thirty_dp">30dp</dimen>
     <dimen name="sixty_two_sp_text_size">62sp</dimen>
     <dimen name="eighteen_sp_text_size">18sp</dimen>
     <dimen name="six_dp_margin">6dp</dimen>
