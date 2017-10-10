@@ -48,6 +48,8 @@ public class MainFragment extends Fragment {
     private ProgressBar mProgressBar;
     private ImageView mTempImage;
     private TextView mCurrentTime;
+    private TextView mLastUpdatedTime;
+    private long mRequestStartTime;
 
 
     @Nullable
@@ -68,12 +70,14 @@ public class MainFragment extends Fragment {
         mTempImage = view.findViewById(R.id.temp_image);
         mCurrentTime = view.findViewById(R.id.currentTime);
         mCurrentTime.setText(DateUtil.formatDateToDisplay(Calendar.getInstance().getTime()));
+        mLastUpdatedTime = view.findViewById(R.id.last_updated_time);
         return view;
     }
 
     private void sendWeatherForecastRequest(String query) {
         if (GeneralUtil.isOnline(getActivity())) {
             GeneralUtil.showProgress(mProgressBar, getActivity().getWindow());
+            mRequestStartTime = System.currentTimeMillis();
             WebApiUtil.getInstance().getWeatherForecast(getWeatherForecastListener, query);
         } else {
             GeneralUtil.hideProgress(mProgressBar, getActivity().getWindow());
@@ -90,6 +94,7 @@ public class MainFragment extends Fragment {
             GeneralUtil.hideProgress(mProgressBar, getActivity().getWindow());
             mCurrentTime.setText(DateUtil.formatDateToDisplay(Calendar.getInstance().getTime()));
             mRootContainer.setVisibility(View.VISIBLE);
+            long totalRequestTime = System.currentTimeMillis() - mRequestStartTime;
             WeatherData weatherData = new Gson().fromJson(response, WeatherData.class);
             sendImageRequest(weatherData.getWeather().get(0).getIcon());
             mCityView.setText(weatherData.getName());

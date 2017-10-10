@@ -196,7 +196,7 @@
             android:layout_marginEnd="@dimen/sixteen_dp_margin">
 
             <TextView
-                android:id="@+id/lastupdated"
+                android:id="@+id/last_updated_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

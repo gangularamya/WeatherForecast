@@ -77,9 +77,9 @@ public class WebApiUtil {
     public void getWeatherForecast(WebApiListener listener, String city) {
         mListener = listener;
         Uri builtUri = Uri.parse(Constants.OPEN_WEATHER_API).buildUpon()
-                .appendQueryParameter("q", city)
-                .appendQueryParameter("units", "metric")
-                .appendQueryParameter("APPID", "976535ec83c4aba2eae773b96f0c6986")
+                .appendQueryParameter(Constants.WEATHER_FORECAST_PARAM, city)
+                .appendQueryParameter(Constants.UNITS_PARAM, Constants.METRICS_PARAM)
+                .appendQueryParameter(Constants.APP_ID_PARAM, Constants.APP_ID)
                 .build();
         GetRequest weatherForecastRequest = new GetRequest(Request.Method.GET, builtUri.toString(), successListener(), errorListener());
 
@@ -97,7 +97,7 @@ public class WebApiUtil {
     public void getWeatherImage(ImageApiListener listener, String imageId) {
         mImageListener = listener;
         Uri builtUri = Uri.parse(Constants.OPEN_WEATHER_IMAGE_API).buildUpon()
-                .appendPath(imageId +".png")
+                .appendPath(imageId +Constants.PNG_EXTENSION)
                 .build();
         ImageRequest imageRequest = new ImageRequest(builtUri.toString(), imageOnSuccessListener(), 300, 200, ImageView.ScaleType.FIT_XY, Bitmap.Config.ARGB_8888, imageOnErrorListener());
         imageRequest.setShouldCache(false);
