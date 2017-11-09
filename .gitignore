@@ -3,6 +3,7 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+/.idea/sonarlint/issuestore
 .DS_Store
 /build
 /captures
